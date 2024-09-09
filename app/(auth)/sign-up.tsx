@@ -1,8 +1,15 @@
-import { images } from "@/constants";
+import InputField from "@/components/InputField";
+import { icons, images } from "@/constants";
+import { useState } from "react";
 import { View, Text, ScrollView, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const SignUp = () => {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   return (
     <ScrollView className="flex-1 bg-white">
       <View className="flex-1 bg-white">
@@ -13,8 +20,14 @@ const SignUp = () => {
           </Text>
         </View>
 
-        <View className="py-5">
-          <InputField />
+        <View className="p-5">
+          <InputField
+            label="Name"
+            placeholder="Enter your name"
+            icon={icons.person}
+            value={form.name}
+            onChangeText={(value) => setForm({ ...form, name: value })}
+          />
         </View>
       </View>
     </ScrollView>
